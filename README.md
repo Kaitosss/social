@@ -37,6 +37,6 @@ NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
 CLERK_SECRET_KEY=
 DATABASE_URL=
 
-# Run the development server
+# Run the app
 npm run dev
 ```
