@@ -16,7 +16,7 @@ import toast from "react-hot-toast";
 type Notifications = Awaited<ReturnType<typeof getNotifications>>;
 type notification = Notifications[number];
 
-function NotificationsPage() {
+export default function NotificationsPage() {
   const [notifications, setNotifications] = useState<notification[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -139,5 +139,3 @@ function NotificationsPage() {
     </div>
   );
 }
-
-export default NotificationsPage;
