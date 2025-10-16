@@ -6,15 +6,13 @@ import { revalidatePath } from "next/cache";
 
 export async function syncUser() {
   try {
-    const { userId } = await auth();
     const user = await currentUser();
+    if (!user) return;
 
-    if (!userId || !user) return;
+    const userId = user.id;
 
     const existingUser = await prisma.user.findUnique({
-      where: {
-        clerkId: userId,
-      },
+      where: { clerkId: userId },
     });
 
     if (existingUser) return existingUser;
@@ -32,7 +30,7 @@ export async function syncUser() {
 
     return dbUser;
   } catch (error) {
-    console.log("Error in syncUser", error);
+    console.error("Error in syncUser", error);
   }
 }
 
