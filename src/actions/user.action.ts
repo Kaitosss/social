@@ -1,14 +1,11 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
-import { auth, currentUser } from "@clerk/nextjs/server";
+import { auth, User } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 
-export async function syncUser() {
+export async function syncUser(user: User) {
   try {
-    const user = await currentUser();
-    if (!user) return;
-
     const userId = user.id;
 
     const existingUser = await prisma.user.findUnique({

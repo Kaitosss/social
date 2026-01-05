@@ -6,7 +6,7 @@ import { syncUser } from "@/actions/user.action";
 
 export default async function Navbar() {
   const user = await currentUser();
-  if (user) await syncUser();
+  if (user) await syncUser(user);
 
   return (
     <nav className="sticky top-0 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-50">
